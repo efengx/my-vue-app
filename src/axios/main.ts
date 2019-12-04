@@ -3,6 +3,8 @@ import request from './request';
 import traverson from 'traverson'
 const JsonHalAdapter = require('traverson-hal');
 
+traverson.registerMediaType(JsonHalAdapter.mediaType, JsonHalAdapter);
+
 // (C)reate
 export const create = (source: string, params: any) => {
     return request.post(source, params)
@@ -20,6 +22,7 @@ export const get = (source: string, params: any) => {
     })
 }
 
+/* 通过 traverson 进行复杂查询 */ 
 export const find = (url: string, source: string) => {
     return new Promise((resolve: any, reject: any) => {
         traverson.from(`${url}`)

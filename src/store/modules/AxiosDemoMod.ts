@@ -1,6 +1,5 @@
 import { Commit, Dispatch } from "vuex"
 import { getDemo } from '@/api/AxiosDemo'
-import { traversonDemo } from '@/api/TraversonDemo'
 
 export interface State {
     projects: any,
@@ -24,8 +23,6 @@ const actions = {
         context: { commit: Commit; dispatch: Dispatch; state: State },
         params: any
     ) {
-        traversonDemo()
-
         await getDemo(params).then(
             (res: any): void => {
                 state.projects = res
